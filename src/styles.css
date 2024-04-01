@@ -10,7 +10,7 @@ body {
 }
 :root {
   --primary-color: #605DC8;
-  --secondary-color: #8B89E6;
+  --secondary-color: #ffffff;
   --accent-color: #e8e7fa;
   --shadow-color: #E8E8E8;
 }
@@ -22,6 +22,11 @@ button.primary {
   color: rgb(255, 255, 255) !important;
   border-radius: 100px !important;
   box-sizing: border-box;  
-  margin-left: 80px;
+  margin-left: 30px;
+  padding-left: 25px !important;
+  padding-right: 25px !important;
+
 }
+
+
 

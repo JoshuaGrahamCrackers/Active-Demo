@@ -22,7 +22,10 @@ import { HousingService } from '../housing.service';
     <label>
       <input type="checkbox" #laundryFilter> Laundry Service
     </label>
-    <button class="primary" type="button" (click)="filterResults(cityFilter.value, stateFilter.value, wifiFilter.checked, laundryFilter.checked)">Search</button>
+    <label>
+      <input type="checkbox" #unitsFilter> Available
+    </label>
+    <button class="primary" type="button" (click)="filterResults(cityFilter.value, stateFilter.value, wifiFilter.checked, laundryFilter.checked, unitsFilter.checked)">Search</button>
   </form>
     </section>
     <section class="results">
@@ -45,13 +48,14 @@ export class HomeComponent {
       this.filteredLocationList = this.housingService.getAllHousingLocations();
   }
 
-  filterResults(city: string, state: string, hasWifi: boolean, hasLaundry: boolean) {
+  filterResults(city: string, state: string, hasWifi: boolean, hasLaundry: boolean, hasUnits:boolean) {
     this.filteredLocationList = this.housingService.getAllHousingLocations().filter(housingLocation => {
         const cityMatch = !city || housingLocation?.city.toLowerCase().includes(city.toLowerCase());
         const stateMatch = !state || housingLocation?.state.toLowerCase().includes(state.toLowerCase());
         const wifiMatch = !hasWifi || housingLocation?.wifi === hasWifi;
         const laundryMatch = !hasLaundry || housingLocation?.laundry === hasLaundry;
-        return cityMatch && stateMatch && wifiMatch && laundryMatch;
+        const availableMatch = !hasUnits || (housingLocation?.availableUnits > 0);
+        return cityMatch && stateMatch && wifiMatch && laundryMatch && availableMatch;
     });
 }
 }

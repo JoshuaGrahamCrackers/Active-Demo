@@ -107,7 +107,18 @@ export class HousingService {
       availableUnits: 6,
       wifi: true,
       laundry: true
+    },
+    {
+      id: 10,
+      name: 'Happy Homes Group',
+      city: 'Stockton',
+      state: 'CA',
+      photo: `${this.baseUrl}/krzysztof-hepner-978RAXoXnH4-unsplash.jpg`,
+      availableUnits: 1,
+      wifi: true,
+      laundry: false
     }
+    
   ];
 
   getAllHousingLocations(): HousingLocation[] {
